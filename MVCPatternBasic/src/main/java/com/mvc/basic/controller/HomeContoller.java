@@ -7,7 +7,6 @@ public class HomeContoller implements Controller
 {
     public String execute(HttpServletRequest request, HttpServletResponse response) throws Exception
     {
-        // TODO Auto-generated method stub
         return "home.jsp";
     }
     

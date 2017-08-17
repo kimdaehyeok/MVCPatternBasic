@@ -1,7 +1,10 @@
-package com.mvc.basic.controller;
+package com.mvc.basic.servlet;
 
 import java.util.HashMap;
 import java.util.Map;
+
+import com.mvc.basic.controller.Controller;
+import com.mvc.basic.controller.HomeContoller;
 
 
 public class RequestMapping
@@ -11,5 +14,10 @@ public class RequestMapping
     public void initMapping()
     {
         mappings.put("/", new HomeContoller());
+    }
+    
+    public Controller findContoller(String url)
+    {
+        return mappings.get(url);
     }
 }
