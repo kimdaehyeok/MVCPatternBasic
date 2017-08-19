@@ -14,6 +14,7 @@ import com.mvc.basic.controller.Controller;
 @WebServlet(name = "dispatcher", urlPatterns = "/", loadOnStartup = 1)
 public class DispatcherServlet extends HttpServlet
 {
+    private static final long serialVersionUID = 1L;
     private RequestMapping requestMapping;
     
     @Override
@@ -49,5 +50,27 @@ public class DispatcherServlet extends HttpServlet
     {
         RequestDispatcher requestDispatcher = request.getRequestDispatcher(viewName);
         requestDispatcher.forward(request, response);
+    }
+    
+    @Override
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
+    {
+        String requestURI = request.getRequestURI();
+
+        System.out.println("request URI : " + requestURI);
+        Controller controller = requestMapping.findContoller(requestURI);
+        
+        try
+        {
+            String viewName = controller.execute(request, response);
+            
+            moveView(viewName,request,response);
+            
+        }
+        catch (Exception e)
+        {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
     }
 }

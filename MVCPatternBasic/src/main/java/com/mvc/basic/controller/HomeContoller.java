@@ -7,7 +7,7 @@ public class HomeContoller implements Controller
 {
     public String execute(HttpServletRequest request, HttpServletResponse response) throws Exception
     {
-        return "home.jsp";
+        return "/WEB-INF/jsp/home.jsp";
     }
     
 }
