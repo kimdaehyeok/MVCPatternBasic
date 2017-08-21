@@ -52,25 +52,4 @@ public class DispatcherServlet extends HttpServlet
         requestDispatcher.forward(request, response);
     }
     
-    @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
-    {
-        String requestURI = request.getRequestURI();
-
-        System.out.println("request URI : " + requestURI);
-        Controller controller = requestMapping.findContoller(requestURI);
-        
-        try
-        {
-            String viewName = controller.execute(request, response);
-            
-            moveView(viewName,request,response);
-            
-        }
-        catch (Exception e)
-        {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        }
-    }
 }
