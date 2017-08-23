@@ -8,7 +8,8 @@ import java.sql.SQLException;
 
 public class ConnectionManager
 {
-    private Connection connection = null;
+    private static Connection connection = null;
+    private static ConnectionManager connectionManager;
     
     public ConnectionManager() throws ClassNotFoundException
     {
@@ -29,6 +30,16 @@ public class ConnectionManager
         connection = DriverManager.getConnection("jdbc:oracle:thin:@127.0.0.1:1521:XE", "board", "eogur1234");
     }
     
+    public static Connection getDatabaseConnection() throws ClassNotFoundException
+    {
+        if(connection == null)
+        {
+            connectionManager = new ConnectionManager(); 
+        }
+        
+        return connection;
+    }
+    
     public void connectionTest() throws SQLException
     {
         PreparedStatement psmt = connection.prepareStatement("SELECT EMPLOYEE_ID  FROM EMPLOYEES WHERE EMPLOYEE_ID = '7369'");
@@ -41,6 +52,4 @@ public class ConnectionManager
             System.out.println(id);
            }
     }
-    
-    
 }
