@@ -27,17 +27,22 @@ public class ConnectionManager
     private void initDatabaseConnection() throws SQLException, ClassNotFoundException
     {
         Class.forName("oracle.jdbc.driver.OracleDriver");
-        connection = DriverManager.getConnection("jdbc:oracle:thin:@127.0.0.1:1521:XE", "board", "eogur1234");
+        connection = DriverManager.getConnection("jdbc:oracle:thin:@127.0.0.1:1521:XE", "board", "eogur123");
     }
     
-    public static Connection getDatabaseConnection() throws ClassNotFoundException
+    public static ConnectionManager getDatabaseConnectionManager() throws ClassNotFoundException
     {
         if(connection == null)
         {
             connectionManager = new ConnectionManager(); 
         }
         
-        return connection;
+        return connectionManager;
+    }
+    
+    public Connection getConnection()
+    {
+        return connectionManager.connection;
     }
     
     public void connectionTest() throws SQLException

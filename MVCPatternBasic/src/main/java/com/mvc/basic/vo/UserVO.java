@@ -1,6 +1,6 @@
 package com.mvc.basic.vo;
 
-public class UserVo
+public class UserVO
 {
     public int empNo;
     public String  eName;
