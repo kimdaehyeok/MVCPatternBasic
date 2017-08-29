@@ -12,4 +12,9 @@ public class AddUserService
         UserDAO userDAO = new UserDAO();
         userDAO.insertUser(userVO);
     }
+    
+    public void searchUserInfo()
+    {
+        
+    }
 }
