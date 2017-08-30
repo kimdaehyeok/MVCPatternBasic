@@ -5,7 +5,8 @@ public class UserVO
     public int empNo;
     public String  eName;
     public String job;
-    
+    public String id;
+    public String password;
     public int getEmpNo()
     {
         return empNo;
@@ -30,7 +31,20 @@ public class UserVO
     {
         this.job = job;
     }
-    
-    
-
+    public String getId()
+    {
+        return id;
+    }
+    public void setId(String id)
+    {
+        this.id = id;
+    }
+    public String getPassword()
+    {
+        return password;
+    }
+    public void setPassword(String password)
+    {
+        this.password = password;
+    }
 }

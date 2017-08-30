@@ -11,12 +11,21 @@ public class UserDAO
     {
         String inserSQL = " INSERT INTO EMP (EMPNO,ENAME,JOB) values (?,?,?) ";
         
-        PreparedStatement prepareStatement = ConnectionManager.getDatabaseConnectionManager().getConnection().prepareStatement(inserSQL);
-        prepareStatement.setInt(1, userVO.getEmpNo());
-        prepareStatement.setString(2, userVO.geteName());
-        prepareStatement.setString(3,  userVO.getJob());
+        PreparedStatement preparedStatement = ConnectionManager.getDatabaseConnectionManager().getConnection().prepareStatement(inserSQL);
+        preparedStatement.setInt(1, userVO.getEmpNo());
+        preparedStatement.setString(2, userVO.geteName());
+        preparedStatement.setString(3,  userVO.getJob());
         
-        prepareStatement.executeUpdate();
+        preparedStatement.executeUpdate();
         
+    }
+    
+    public void checkIDAndPaassword(UserVO userVO) throws ClassNotFoundException, SQLException
+    {
+        String selectSQL = "SELECT * FROM EMP WHERE ID = ? AND PASSWORD = ?";
+        
+        PreparedStatement preparedStatement = ConnectionManager.getDatabaseConnectionManager().getConnection().prepareStatement(selectSQL);
+        preparedStatement.setString(1, userVO.getId());
+        preparedStatement.setString(2, userVO.getPassword());
     }
 }
