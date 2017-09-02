@@ -7,6 +7,7 @@ public class UserVO
     public String job;
     public String id;
     public String password;
+    
     public int getEmpNo()
     {
         return empNo;
