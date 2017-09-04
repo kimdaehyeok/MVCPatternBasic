@@ -28,6 +28,8 @@ public class UserModifyCertController implements Controller
         
         if(getUserInfoVO.getId().equals(UserID))
         {
+            request.setAttribute("User", userVO);
+            System.out.println(userVO.getId());
             return "/WEB-INF/jsp/UserModifyCheckSuccess.jsp";
         }
 
