@@ -16,7 +16,7 @@ public class AddUserController implements Controller
         
         UserVO userVO = new UserVO();
         
-        userVO.setEmpNo(empNo);
+        userVO.setEmpNO(empNo);
         userVO.seteName(empName);
         userVO.setJob(empJob);
         

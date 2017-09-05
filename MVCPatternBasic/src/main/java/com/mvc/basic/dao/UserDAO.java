@@ -13,7 +13,7 @@ public class UserDAO
         String inserSQL = " INSERT INTO EMP (EMPNO,ENAME,JOB) values (?,?,?) ";
         
         PreparedStatement preparedStatement = ConnectionManager.getDatabaseConnectionManager().getConnection().prepareStatement(inserSQL);
-        preparedStatement.setInt(1, userVO.getEmpNo());
+        preparedStatement.setInt(1, userVO.getEmpNO());
         preparedStatement.setString(2, userVO.geteName());
         preparedStatement.setString(3, userVO.getJob());
         
@@ -35,8 +35,15 @@ public class UserDAO
         
         while (resultSet.next())
         {
-            getUserInfoVO.setId(resultSet.getString(10));
-            getUserInfoVO.setPassword(resultSet.getString(9));
+            getUserInfoVO.setEmpNO(resultSet.getInt("empno"));
+            getUserInfoVO.seteName(resultSet.getString("ename"));
+            getUserInfoVO.setJob(resultSet.getString("job"));
+            getUserInfoVO.setMgr(resultSet.getInt("mgr"));
+            getUserInfoVO.setHiredate(resultSet.getDate("HIREDATE"));
+            getUserInfoVO.setSal(resultSet.getInt("sal"));
+            getUserInfoVO.setComm(resultSet.getInt("COMM"));
+            getUserInfoVO.setId(resultSet.getString("id"));
+            getUserInfoVO.setPassword(resultSet.getString("password"));
         }
         
         return getUserInfoVO;

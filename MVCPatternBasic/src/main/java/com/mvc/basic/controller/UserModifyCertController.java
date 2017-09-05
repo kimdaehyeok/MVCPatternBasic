@@ -20,15 +20,10 @@ public class UserModifyCertController implements Controller
         
         UserModifyCertService userModifyCertService = new UserModifyCertService();
         UserVO getUserInfoVO = userModifyCertService.getUserInfo(userVO);
-
-        if(getUserInfoVO.getId() == null)
-        {
-            getUserInfoVO.setId("DEFAULT");
-        }
         
         if(getUserInfoVO.getId().equals(UserID))
         {
-            request.setAttribute("User", userVO);
+            request.setAttribute("User", getUserInfoVO);
             System.out.println(userVO.getId());
             return "/WEB-INF/jsp/UserModifyCheckSuccess.jsp";
         }

@@ -8,8 +8,17 @@
 <title>Insert title here</title>
 </head>
 <body>
-	UserModifyCheckSuccess.jsp!!
+	UserModifyCheckSuccess.jsp!!</br>
 	
-	<c:out value="${User.id}"></c:out>
+	<c:out value="${User.empNO}"></c:out></br>
+	<c:out value="${User.eName}"></c:out></br>
+	<c:out value="${User.job}"></c:out></br>
+	<c:out value="${User.mgr}"></c:out></br>
+	<c:out value="${User.hiredate}"></c:out></br>
+	<c:out value="${User.sal}"></c:out></br>
+	<c:out value="${User.comm}"></c:out></br>
+	<c:out value="${User.deptno}"></c:out></br>
+	<c:out value="${User.id}"></c:out></br>
+	<c:out value="${User.password}"></c:out></br>
 </body>
 </html>
