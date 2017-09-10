@@ -39,6 +39,7 @@ public class UserDAO
             getUserInfoVO.seteName(resultSet.getString("ename"));
             getUserInfoVO.setJob(resultSet.getString("job"));
             getUserInfoVO.setMgr(resultSet.getInt("mgr"));
+            getUserInfoVO.setDeptno(resultSet.getInt("deptno"));
             getUserInfoVO.setHiredate(resultSet.getDate("HIREDATE"));
             getUserInfoVO.setSal(resultSet.getInt("sal"));
             getUserInfoVO.setComm(resultSet.getInt("COMM"));
@@ -47,5 +48,20 @@ public class UserDAO
         }
         
         return getUserInfoVO;
+    }
+    
+    public void modifyUserInfo(UserVO userVO) throws ClassNotFoundException, SQLException
+    {
+        String userInfoUpdateSQL = "UPDATE EMP SET eName = ?, job = ?, sal = ?, deptno = ?, password = ? where id = ? ";
+
+        PreparedStatement preparedStatement = ConnectionManager.getDatabaseConnectionManager().getConnection().prepareStatement(userInfoUpdateSQL);
+        preparedStatement.setString(1, userVO.geteName());
+        preparedStatement.setString(2, userVO.getJob());
+        preparedStatement.setInt(3, userVO.getSal());
+        preparedStatement.setInt(4, userVO.getDeptno());
+        preparedStatement.setString(5, userVO.getPassword());
+        preparedStatement.setString(6, userVO.getId());
+        
+        preparedStatement.executeUpdate();
     }
 }
